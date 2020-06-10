@@ -42,6 +42,7 @@ def alternate_name_validation(df, columns_data):
   return return_data
   
   ```
+  * sample feed for testing this is CPVIRTUAL_CG99.
   
   * finally we are returning that modified dataframe.
   
@@ -104,4 +105,36 @@ def conversion_code_apply(row, column, type_):
 ```
 
  in this function we are handling below datatypes they are:
-  1.
+  
+  1.Integer
+  2.String
+  3.varchar
+  3.object
+  4.dict
+  5.float32 and float64
+  6.date
+  7.time
+  
+## mandatory_check Block flow
+
+This function helps to select mandatory columns from input dataframe columns
+
+columnsToCheck = list of mandatory columns
+
+```
+def mandatory_check(df, columnsToCheck):
+    return_data = {}
+    for columnName in columnsToCheck:
+        rejection_list = []
+        column_data = df[columnName].tolist()
+        for j, data in enumerate(column_data):
+            if pd.isna(data) or data==" " or data=="":
+                rejection_list.append(j)
+        update_rejection_reason(df, rejection_list, columnName+" is empty")
+```
+* the update_rejection_reason function will add rejection reason
+
+## upload_csv Block flow
+
+This function 
+def upload_csv(file_path=None,raw_file_path=None,standard_file_path=None,table_name=None,type_=None,rejected_file_path=None,ingest = True):
