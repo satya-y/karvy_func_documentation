@@ -117,9 +117,9 @@ def conversion_code_apply(row, column, type_):
   
 ## mandatory_check Block flow
 
-This function helps to reject the rows which are empty in mandatory columns from input dataframe columns
+This function helps to reject the rows which are empty in mandatory columns from input dataframe columns.
 
-columnsToCheck = list of mandatory columns
+  columnsToCheck = list of mandatory columns
 
 ```
 def mandatory_check(df, columnsToCheck):
