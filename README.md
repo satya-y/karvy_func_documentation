@@ -107,12 +107,19 @@ def conversion_code_apply(row, column, type_):
  in this function we are handling below datatypes they are:
   
   1.Integer
+  
   2.String
+  
   3.varchar
+  
   3.object
+  
   4.dict
+  
   5.float32 and float64
+  
   6.date
+  
   7.time
   
 ## mandatory_check Block flow
