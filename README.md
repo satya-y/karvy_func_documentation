@@ -117,7 +117,7 @@ def conversion_code_apply(row, column, type_):
   
 ## mandatory_check Block flow
 
-This function helps to select mandatory columns from input dataframe columns
+This function helps to reject the rows which are empty in mandatory columns from input dataframe columns
 
 columnsToCheck = list of mandatory columns
 
@@ -136,5 +136,12 @@ def mandatory_check(df, columnsToCheck):
 
 ## upload_csv Block flow
 
-This function 
+This function will ingest the generated output files (standard and raw) into database tables.
+
+```
 def upload_csv(file_path=None,raw_file_path=None,standard_file_path=None,table_name=None,type_=None,rejected_file_path=None,ingest = True):
+
+    query = f"/opt/mssql-tools/bin/bcp karvy_extraction.dbo.{table_name} in '{str(Path(raw_file_path))}' -S {os.environ['HOST_IP']} -U {os.environ['LOCAL_DB_USER']} -P '{os.environ['LOCAL_DB_PASSWORD']}' -t '|' -c -q -e -F2"
+
+```
+
